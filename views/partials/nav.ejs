@@ -1,9 +1,11 @@
-<nav
-  class="navbar navbar-expand-lg bg-body-tertiary bg-dark"
-  data-bs-theme="dark"
->
-  <div class="container-fluid">
-    <a class="navbar-brand" href="#">Blogify</a>
+<nav class="navbar navbar-expand-lg navbar-dark custom-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="#">
+      <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor" class="brand-icon" viewBox="0 0 16 16">
+        <path d="M0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2zm5.5 3a1.5 1.5 0 1 0-3 0 1.5 1.5 0 0 0 3 0zm4 0a1.5 1.5 0 1 0-3 0 1.5 1.5 0 0 0 3 0zm-4 4a1.5 1.5 0 1 0-3 0 1.5 1.5 0 0 0 3 0zm4 0a1.5 1.5 0 1 0-3 0 1.5 1.5 0 0 0 3 0zm-4 4a1.5 1.5 0 1 0-3 0 1.5 1.5 0 0 0 3 0zm4 0a1.5 1.5 0 1 0-3 0 1.5 1.5 0 0 0 3 0z"/>
+      </svg>
+      Blogify
+    </a>
     <button
       class="navbar-toggler"
       type="button"
@@ -16,35 +18,70 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
-      <ul class="navbar-nav">
+      <ul class="navbar-nav me-auto">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Home</a>
+          <a class="nav-link active" aria-current="page" href="#">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="nav-icon" viewBox="0 0 16 16">
+              <path d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L2 8.207V13.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V8.207l.646.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.707 1.5ZM13 7.207V13.5a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5V7.207l5-5 5 5Z"/>
+            </svg>
+            Home
+          </a>
         </li>
         <% if (locals.user) { %>
         <li class="nav-item">
-          <a class="nav-link" href="/blog/add-new">Add Blog</a>
+          <a class="nav-link" href="/blog/add-new">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="nav-icon" viewBox="0 0 16 16">
+              <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
+            </svg>
+            Add Blog
+          </a>
         </li>
+        <% } %>
+      </ul>
+      
+      <ul class="navbar-nav">
+        <% if (locals.user) { %>
         <li class="nav-item dropdown">
           <a
-            class="nav-link dropdown-toggle"
+            class="nav-link dropdown-toggle user-menu"
             href="#"
             role="button"
             data-bs-toggle="dropdown"
             aria-expanded="false"
           >
-
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="user-icon" viewBox="0 0 16 16">
+              <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+              <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
+            </svg>
+            <span class="user-name"><%= locals.user.fullName %></span>
           </a>
-                    <%= locals.user.fullName %>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="/user/logout">Logout</a></li>
+          <ul class="dropdown-menu dropdown-menu-end">
+            <li><a class="dropdown-item" href="/user/logout">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="dropdown-icon" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M10 12.5a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v2a.5.5 0 0 0 1 0v-2A1.5 1.5 0 0 0 9.5 2h-8A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-2a.5.5 0 0 0-1 0v2z"/>
+                <path fill-rule="evenodd" d="M15.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L14.293 7.5H5.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3z"/>
+              </svg>
+              Logout
+            </a></li>
           </ul>
         </li>
         <% } else {%>
         <li class="nav-item">
-          <a class="nav-link" href="/user/signup">Create Account</a>
+          <a class="nav-link signup-btn" href="/user/signup">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="nav-icon" viewBox="0 0 16 16">
+              <path d="M6 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H1s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C9.516 10.68 8.289 10 6 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z"/>
+            </svg>
+            Create Account
+          </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/user/signin">Signin</a>
+          <a class="nav-link login-btn" href="/user/signin">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="nav-icon" viewBox="0 0 16 16">
+              <path fill-rule="evenodd" d="M10 12.5a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v2a.5.5 0 0 0 1 0v-2A1.5 1.5 0 0 0 9.5 2h-8A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-2a.5.5 0 0 0-1 0v2z"/>
+              <path fill-rule="evenodd" d="M15.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L14.293 7.5H5.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3z"/>
+            </svg>
+            Sign In
+          </a>
         </li>
         <% } %>
       </ul>
@@ -53,7 +90,185 @@
 </nav>
 
 <% if (locals.error) { %>
-<div class="container mt-4">
-  <div class="alert alert-danger" role="alert"><%= locals.error %></div>
+<div class="container mt-3">
+  <div class="alert alert-danger alert-dismissible fade show custom-alert" role="alert">
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="alert-icon" viewBox="0 0 16 16">
+      <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+    </svg>
+    <%= locals.error %>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
 </div>
 <% } %>
+
+<style>
+  body {
+    padding-top: 56px; /* Reduced from 76px to 56px */
+  }
+  
+  .custom-navbar {
+    background: linear-gradient(135deg, #2c3e50 0%, #4a5568 100%) !important;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+    padding: 0.5rem 0; /* Reduced padding */
+  }
+  
+  .navbar-brand {
+    font-weight: 700;
+    font-size: 1.4rem; /* Slightly smaller */
+    display: flex;
+    align-items: center;
+    color: #fff !important;
+    transition: all 0.3s ease;
+  }
+  
+  .brand-icon {
+    margin-right: 0.5rem;
+    color: #63b3ed;
+  }
+  
+  .navbar-brand:hover {
+    transform: translateY(-1px);
+  }
+  
+  .nav-link {
+    font-weight: 500;
+    padding: 0.4rem 0.8rem !important; /* Reduced padding */
+    margin: 0 0.15rem; /* Reduced margin */
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    transition: all 0.3s ease;
+    color: rgba(255, 255, 255, 0.85) !important;
+    font-size: 0.95rem; /* Slightly smaller font */
+  }
+  
+  .nav-icon {
+    margin-right: 0.4rem; /* Reduced margin */
+    transition: all 0.3s ease;
+    width: 14px; /* Slightly smaller */
+    height: 14px;
+  }
+  
+  .nav-link:hover, .nav-link.active {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #fff !important;
+    transform: translateY(-1px);
+  }
+  
+  .nav-link:hover .nav-icon, .nav-link.active .nav-icon {
+    color: #63b3ed;
+    transform: scale(1.1);
+  }
+  
+  .user-menu {
+    background-color: rgba(255, 255, 255, 0.08);
+    border-radius: 50px;
+    padding: 0.4rem 0.8rem !important; /* Reduced padding */
+    margin-left: 0.4rem; /* Reduced margin */
+  }
+  
+  .user-icon {
+    margin-right: 0.4rem; /* Reduced margin */
+    color: #63b3ed;
+    width: 16px; /* Slightly smaller */
+    height: 16px;
+  }
+  
+  .user-name {
+    font-weight: 500;
+    font-size: 0.95rem; /* Slightly smaller */
+  }
+  
+  .dropdown-menu {
+    border: none;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    border-radius: 10px; /* Slightly smaller */
+    padding: 0.4rem; /* Reduced padding */
+    margin-top: 0.5rem; /* Reduced margin */
+    background: linear-gradient(135deg, #2d3748 0%, #4a5568 100%);
+  }
+  
+  .dropdown-item {
+    color: rgba(255, 255, 255, 0.85);
+    border-radius: 6px; /* Slightly smaller */
+    padding: 0.6rem 0.8rem; /* Reduced padding */
+    display: flex;
+    align-items: center;
+    transition: all 0.3s ease;
+    font-size: 0.9rem; /* Slightly smaller */
+  }
+  
+  .dropdown-icon {
+    margin-right: 0.4rem; /* Reduced margin */
+    width: 14px; /* Slightly smaller */
+    height: 14px;
+  }
+  
+  .dropdown-item:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #fff;
+  }
+  
+  .signup-btn {
+    background-color: rgba(99, 179, 237, 0.15);
+    margin-right: 0.4rem; /* Reduced margin */
+  }
+  
+  .signup-btn:hover {
+    background-color: rgba(99, 179, 237, 0.3);
+  }
+  
+  .login-btn {
+    background-color: rgba(72, 187, 120, 0.15);
+  }
+  
+  .login-btn:hover {
+    background-color: rgba(72, 187, 120, 0.3);
+  }
+  
+  .custom-alert {
+    border-radius: 10px; /* Slightly smaller */
+    border: none;
+    box-shadow: 0 4px 12px rgba(220, 53, 69, 0.2);
+    display: flex;
+    align-items: center;
+    padding: 0.8rem 1rem; /* Reduced padding */
+    margin-top: 1rem; /* Reduced margin */
+  }
+  
+  .alert-icon {
+    margin-right: 0.6rem; /* Reduced margin */
+    color: #dc3545;
+    width: 18px; /* Slightly smaller */
+    height: 18px;
+  }
+  
+  .navbar-toggler {
+    border: none;
+    padding: 0.2rem 0.4rem; /* Reduced padding */
+  }
+  
+  .navbar-toggler:focus {
+    box-shadow: none;
+  }
+  
+  @media (max-width: 991.98px) {
+    .navbar-nav {
+      padding: 0.8rem 0; /* Reduced padding */
+    }
+    
+    .nav-link {
+      margin: 0.2rem 0; /* Reduced margin */
+      justify-content: center;
+    }
+    
+    .user-menu {
+      justify-content: center;
+      margin: 0.3rem 0; /* Reduced margin */
+    }
+    
+    .dropdown-menu {
+      text-align: center;
+    }
+  }
+</style>
